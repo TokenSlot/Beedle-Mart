@@ -1,0 +1,15 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #222034;
+    color: aliceblue;
+}
+
+#beedle-icon {
+    width: 35px;
+}
