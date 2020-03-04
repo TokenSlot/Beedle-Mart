@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+    <title>Beedle Mart - {{ profile_user }}</title>
+
+{% endblock %}
+
+{% block body %}
+
+    {% include 'header.html' %}
+
+    <div class="container container-small text-light">
+        <h1>{{ profile_user }}</h1>
+    </div>
+
+{% endblock %}

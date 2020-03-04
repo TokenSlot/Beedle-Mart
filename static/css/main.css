@@ -7,9 +7,56 @@ html, body {
 body {
     font-family: sans-serif;
     background-color: #222034;
-    color: aliceblue;
 }
 
 #beedle-icon {
     width: 35px;
+}
+
+#searchbox {
+    outline: none !important;
+    box-shadow: none;
+    border: 0px solid transparent;
+}
+
+.ruler {
+    border-top: 1px solid white;
+}
+
+
+@media (min-width: 768px) {
+    .container-small {
+        width: 300px;
+    }
+    .container-large {
+        width: 970px;
+    }
+}
+@media (min-width: 992px) {
+    .container-small {
+        width: 500px;
+    }
+    .container-large {
+        width: 1170px;
+    }
+}
+@media (min-width: 1200px) {
+    .container-small {
+        width: 700px;
+    }
+    .container-large {
+        width: 1500px;
+    }
+}
+
+.container-small, .container-large {
+    max-width: 100%;
+}
+
+.item-box {
+
+}
+
+.item-img {
+    width: 150px;
 }
