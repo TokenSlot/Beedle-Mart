@@ -1,3 +1,4 @@
+/* psql -U username dbname < dbexport.pgsql */
 html, body {
     margin: 0;
     width: 100%;
@@ -53,10 +54,39 @@ body {
     max-width: 100%;
 }
 
-.item-box {
+.item {
 
+    margin: 3px;
+}
+
+.item-name {
+    text-decoration: none !important;
+}
+
+.img-box {
+    max-height: 600px;
+    width: 180px;
 }
 
 .item-img {
-    width: 150px;
+    max-width: 100%;
+    max-height: 113.38px;
+    margin: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.item-price {
+    font-size: 25px;
+}
+
+.item-orig-price {
+    text-decoration: line-through;
+}
+
+.custom-truncate {
+    white-space: nowrap;
+    width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

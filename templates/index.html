@@ -14,10 +14,54 @@
         <div class="featured mt-3">
             <h1 class="text-light">Featured</h1>
             <hr class="ruler mt-0">
+            <div class="d-flex flex-wrap justify-content-around pt-1 h-100">
+                {% for feat in feats %}
+                        <div class="item p-2 bg-light rounded">
+                            <p class="m-0 custom-truncate"><a class="item-name" href="/product/{{ feat['product_id'] }}">{{ feat['product_name'] }}</a></p>
+                            <div class="img-box mb-2">
+                                <a href="/product/{{ feat['product_id'] }}">
+                                    {% set img_name = feat['product_img'] %}
+                                    <img class="item-img border rounded" src="/static/img/{{img_name}}/" alt="{{ feat['product_img'] }}">
+                                </a>
+                            </div>
+                            <div class="options">
+                                <p class="item-price text-primary mb-0">₱{{'%.2f' | format (feat['price'])}}</p>
+                                {% if feat['discount'] > 0 %}
+                                <small class="mb-0">
+                                    <span class="text-muted item-orig-price">₱{{'%.2f' | format (feat['orig_price'])}}</span>
+                                    <span class="item-discount">-{{feat['discount']}}%</span>
+                                </small>
+                                {% endif %}
+                            </div>
+                        </div>
+                {% endfor %}
+            </div>
         </div>
-        <div class="top-selling">
+        <div class="top_selling">
             <h1 class="text-light">Top Selling</h1>
             <hr class="ruler mt-0">
+            <div class="d-flex flex-wrap justify-content-around pt-1 h-100">
+                {% for top in tops %}
+                        <div class="item p-2 bg-light rounded ">
+                            <p class="m-0 custom-truncate"><a class="item-name" href="/product/{{ top['product_id'] }}">{{ top['product_name'] }}</a></p>
+                            <div class="img-box mb-2">
+                                <a href="/product/{{ top['product_id'] }}">
+                                    {% set img_name = top['product_img'] %}
+                                    <img class="item-img border rounded" src="/static/img/{{img_name}}/" alt="{{ top['product_img'] }}">
+                                </a>
+                            </div>
+                            <div class="options">
+                                <p class="item-price text-primary mb-0">₱{{'%.2f' | format (top['price'])}}</p>
+                                {% if top['discount'] > 0 %}
+                                <small class="mb-0">
+                                    <span class="text-muted item-orig-price">₱{{'%.2f' | format (top['orig_price'])}}</span>
+                                    <span class="item-discount">-{{top['discount']}}%</span>
+                                </small>
+                                {% endif %}
+                            </div>
+                        </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 

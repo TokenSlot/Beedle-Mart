@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+    <title>Beedle Mart</title>
+
+{% endblock %}
+
+{% block body %}
+
+    {% include 'header.html' %}
+
+    <div class="container container-small">
+        <div class="rounded bg-light w-100 p-3 mt-3">
+
+            <h2>{{ product['product_name']}}</h2>
+            <img class="w-100 rounded" src="/static/img/{{ product['product_img'] }}" alt="{{ product['product_img'] }}">
+            <div class="d-flex justify-content-between">
+                <div class="align-self-end">
+                    <p class='mt-3'>{{ product['product_info'] }}</p>
+                    <h3 class="text-primary d-inline-block m-0">₱{{'%.2f' | format (product['price'])}}</h3>
+                    <small class="mb-0">
+                        <span class="text-muted item-orig-price">₱{{'%.2f' | format (product['orig_price'])}}</span>
+                        <span class="item-discount">-{{product['discount']}}%</span>
+                    </small>
+                </div>
+                <div class="align-self-end">
+                    <a class="btn btn-primary btn-block text-light">Add to Cart</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
