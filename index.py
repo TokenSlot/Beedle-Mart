@@ -178,13 +178,20 @@ def shop(profile_user):
     userId = session.get('ID')
 
     cursor = conn.cursor(cursor_factory=RealDictCursor)
+    query = "SELECT user_id FROM users WHERE username=%s"
+    data = [profile_user]
+    cursor.execute(query, data)
+    owner = cursor.fetchone()
+
+    if owner is None:
+        return redirect('/404')
+
     query = "SELECT * FROM products WHERE user_id=%s"
-    data = [userId]
+    data = [owner['user_id']]
     cursor.execute(query, data)
     products = cursor.fetchall()
 
-    if userId is None:
-        return redirect('/404')
+    
 
     username = ''
     isSessionOn = False
@@ -208,6 +215,26 @@ def browse():
         isSessionOn = True
     return render_template('browse.html', products=products,username=username, isSessionOn=isSessionOn)
 
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    keyword = request.form['keyword']
+    return redirect('/browse/'+keyword)
+
+@app.route('/browse/<keyword>', methods=['GET', 'POST'])
+def browseSearch(keyword):
+    cursor = conn.cursor(cursor_factory=RealDictCursor)
+    data = keyword.lower()
+    query = "SELECT * FROM products WHERE lower(product_name) LIKE '%"+data+"%'"
+    cursor.execute(query)
+    products = cursor.fetchall()
+
+    username = ''
+    isSessionOn = False
+    if not session.get('USERNAME') is None:
+        username = session.get("USERNAME")
+        isSessionOn = True
+    return render_template('browse.html', products=products,username=username, isSessionOn=isSessionOn)
+
 @app.route('/product/<id>', methods=['GET', 'POST'])
 def product(id):
 
@@ -217,12 +244,19 @@ def product(id):
     cursor.execute(query, data)
     product = cursor.fetchone()
 
+    userId = product['user_id']
+
+    query = "SELECT username FROM users WHERE user_id = %s"
+    data = [userId]
+    cursor.execute(query, data)
+    owner = cursor.fetchone()   
+
     username = ''
     isSessionOn = False
     if not session.get('USERNAME') is None:
         username = session.get("USERNAME")
         isSessionOn = True
-    return render_template('product.html', product=product, username=username, isSessionOn=isSessionOn)
+    return render_template('product.html', product=product, owner=owner, username=username, isSessionOn=isSessionOn)
 
 
 

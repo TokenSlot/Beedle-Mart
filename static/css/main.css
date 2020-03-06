@@ -1,4 +1,4 @@
-/* psql -U username dbname < dbexport.pgsql */
+/* psql -U admin beedle_db < dbexport.pgsql */
 html, body {
     margin: 0;
     width: 100%;
@@ -89,4 +89,9 @@ body {
     width: 120px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.productor {
+    display: block;
+    max-width: 150px;
 }

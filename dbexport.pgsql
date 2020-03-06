@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.1
--- Dumped by pg_dump version 12.1
+-- Dumped from database version 11.6
+-- Dumped by pg_dump version 11.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -18,7 +18,7 @@ SET row_security = off;
 
 SET default_tablespace = '';
 
-SET default_table_access_method = heap;
+SET default_with_oids = false;
 
 --
 -- Name: addresses; Type: TABLE; Schema: public; Owner: admin
@@ -269,6 +269,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 
 COPY public.addresses (user_id, address, address2, city, postal_code, country_code) FROM stdin;
 4	Brgy. Bignay		Valenzuela City	1440	PH
+5	1234 palawan ave santolan mexico brazil	new york antipolo palawan bicol	pasig	1234	PH
 \.
 
 
@@ -319,6 +320,8 @@ COPY public.products (user_id, product_id, product_name, product_img, product_in
 4	15	Dagat	1583442141.4029033_tokenslot_69561.jpg	Kaya mo bilhin?	5000.000000	1	1003221.000000	100
 4	16	Mood Sticker	1583442209.1159222_tokenslot_WIN_20200301_00_01_15_Pro.jpg	Moody sticker	5.000000	15	100.000000	95
 4	17	Red Horse	1583445278.544607_tokenslot_red_horse_1L.png	Hooooy Alak na naman!	120.000000	15	138.000000	14
+4	18	Bacardi	1583490208.154618_tokenslot_bacardi-bacardi-gold-rum-175l.jpg	malakas ang mali	1000.000000	13	2500.000000	60
+5	19	Johnny johnny yes papa	1583490440.7313354_jm123_image.jpg	He can do anything you want <3 :p	1000.000000	1	9000.000000	89
 \.
 
 
@@ -344,6 +347,7 @@ COPY public.top_selling (product_id, buy_count) FROM stdin;
 
 COPY public.users (user_id, first_name, last_name, birthdate, gender, username, password, email, contact_no) FROM stdin;
 4	Roman	Paltera	2020-03-01	M	tokenslot	81dc9bdb52d04dc20036dbd8313ed055	rompalt37@gmail.com	92123123123
+5	Jeremiah	Ibarreta	3444-01-01	M	jm123	81dc9bdb52d04dc20036dbd8313ed055	ibarrrrrr@yahoo.com	099999999
 \.
 
 
@@ -358,7 +362,7 @@ SELECT pg_catalog.setval('public.ordered_product_order_id_seq', 1, false);
 -- Name: products_product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.products_product_id_seq', 17, true);
+SELECT pg_catalog.setval('public.products_product_id_seq', 19, true);
 
 
 --
@@ -372,7 +376,7 @@ SELECT pg_catalog.setval('public.shops_shop_id_seq', 1, false);
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 4, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 5, true);
 
 
 --
