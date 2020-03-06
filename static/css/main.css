@@ -1,4 +1,12 @@
-/* psql -U admin beedle_db < dbexport.pgsql */
+/* 
+create user admin with superuser encrpyted password '1234'
+psql -U postgres
+create database beedle_db;
+\q
+psql -U admin beedle_db < dbexport.pgsql 
+psql -d beedle_db -U admin
+
+*/
 html, body {
     margin: 0;
     width: 100%;
